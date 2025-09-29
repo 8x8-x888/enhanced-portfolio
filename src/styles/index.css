@@ -1,0 +1,41 @@
+/* Tailwind CSS directives for setup */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scroll-padding for sticky header behavior with anchors */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Adjust based on sticky header height */
+}
+
+/* Base styles for the "Design Upgrade" */
+@layer base {
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-tight;
+  }
+  h2 {
+    @apply text-3xl sm:text-4xl md:text-5xl text-light-text;
+  }
+  .gradient-text {
+    /* Custom gradient for GoHighLevel text, based on original HTML */
+    background: linear-gradient(to right, #38bdf8, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+}
+
+/* Custom UI Components */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-primary-blue text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2 focus:ring-offset-dark-bg;
+  }
+  .btn-secondary {
+    @apply px-6 py-3 bg-dark-bg text-primary-blue border border-primary-blue font-semibold rounded-lg shadow-lg hover:bg-gray-800 transition duration-300 transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2 focus:ring-offset-dark-bg;
+  }
+  .pill-tech {
+    @apply inline-flex items-center gap-2 px-3 py-1 text-sm font-semibold rounded-full border border-accent-cyan/30 bg-accent-cyan/10 text-accent-cyan;
+  }
+}

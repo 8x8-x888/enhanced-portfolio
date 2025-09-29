@@ -49,13 +49,15 @@ const Hero = () => {
           {/* CTA Buttons - Calendly Integration */}
           <div className="flex flex-wrap gap-4 pt-4">
             <button 
-              onClick={openCalendly} 
-              className="btn-primary flex items-center gap-2"
-              aria-label="Book a call to start building your automation workflow"
-            >
-              <PhoneCallIcon className="w-5 h-5" />
-              Book a Call Now
-            </button>
+				onClick={openCalendly} 
+				className="btn-primary flex items-center gap-2 animate-pulse hover:scale-105 transition-transform"
+				aria-label="Book a call to start building your automation workflow"
+			>
+			<	
+				PhoneCallIcon className="w-5 h-5" />
+				Book a Call Now
+			</button>
+
             <a href="#portfolio-gallery" className="btn-secondary">
               View Case Studies
             </a>

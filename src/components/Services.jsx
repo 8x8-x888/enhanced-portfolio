@@ -2,6 +2,7 @@
 import React from 'react';
 import { SERVICE_CARDS } from '../assets/data';
 import { PhoneCallIcon } from '../assets/Icons';
+import CalendlyModal from "./CalendlyModal";
 
 // ServiceCard component for a single service offering
 const ServiceCard = ({ service }) => {
@@ -38,7 +39,9 @@ const Services = ({ onBookACallClick }) => {
             className="btn-primary flex items-center gap-2 mx-auto mb-6"
           >
             <PhoneCallIcon className="w-5 h-5" />
-            Let's Connect!
+            <CalendlyModal>
+			  Let’s Connect
+			</CalendlyModal>
           </button>
           <h2 className="text-light-text font-extrabold">SERVICES</h2>
         </div>

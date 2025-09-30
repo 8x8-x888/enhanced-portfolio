@@ -1,7 +1,8 @@
 // src/components/Hero.jsx
 import React, { useEffect, useRef } from 'react';
 import { HERO_TAGS } from '../assets/data';
-import { PhoneCallIcon } from '../assets/Icons'; 
+import { PhoneCallIcon } from '../assets/Icons';
+import CalendlyModal from "./CalendlyModal"; 
 
 // Component for the main Hero section
 const Hero = () => {
@@ -14,20 +15,10 @@ const Hero = () => {
     }
   }, []);
 
-  // Open Calendly popup
-  const openCalendly = (e) => {
-    e.preventDefault();
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({
-        url: 'https://calendly.com/nodweb13/30min?hide_gdpr_banner=1'
-      });
-    }
-  };
-
   return (
     <section id="hero" className="py-16 md:py-24 bg-dark-bg" role="region" aria-label="Hero Section: Build, Automate, Scale">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
-        
+
         {/* Text Content Column */}
         <div className="space-y-6 animate-fadeInLeft">
           <div className="pill-tech">
@@ -46,18 +37,13 @@ const Hero = () => {
             <span className="gradient-text font-extrabold"> GoHighLevel</span>.
           </p>
 
-          {/* CTA Buttons - Calendly Integration */}
-          <div className="flex flex-wrap gap-4 pt-4">
-            <button 
-				onClick={openCalendly} 
-				className="btn-primary flex items-center gap-2 animate-pulse hover:scale-105 transition-transform"
-				aria-label="Book a call to start building your automation workflow"
-			>
-			<	
-				PhoneCallIcon className="w-5 h-5" />
-				Book a Call Now
-			</button>
-
+			  {/* Book a Call button using CalendlyModal */}
+			  <CalendlyModal>
+				<span className="inline-flex items-center gap-2">
+				  <PhoneCallIcon className="w-5 h-5" />
+				  Book a Call
+				</span>
+			  </CalendlyModal>
             <a href="#portfolio-gallery" className="btn-secondary">
               View Case Studies
             </a>
@@ -72,8 +58,8 @@ const Hero = () => {
             ))}
           </div>
         </div>
-        
-        {/* Image/Gravatar Column */}
+
+        {/* Image / Gravatar Column */}
         <div className="hidden md:block md:justify-self-end animate-fadeInRight">
           <img
             ref={imageRef}
@@ -82,6 +68,7 @@ const Hero = () => {
             className="rounded-xl shadow-2xl w-full max-w-sm lg:max-w-md object-cover border-4 border-primary-blue/50"
             width="500"
             height="500"
+            loading="lazy"
           />
         </div>
       </div>

@@ -1,95 +1,87 @@
 // src/components/Header.jsx
 import React, { useState } from 'react';
 import { NAV_LINKS } from '../assets/data';
-import { MenuIcon, CloseIcon, UserIcon } from '../assets/Icons'; 
+import { MenuIcon, CloseIcon, UserIcon } from '../assets/Icons';
 
-// Component for the navigation menu item
+// Small Nav item component
 const NavItem = ({ name, href, onLinkClick }) => (
   <a
     href={href}
     onClick={onLinkClick}
-    className="block text-lg lg:inline-block lg:text-base font-semibold text-light-text hover:text-primary-blue transition-colors duration-200 py-2 lg:py-0 border-b border-gray-700 lg:border-none"
+    className="block text-lg lg:inline-block lg:text-base font-medium text-gray-200 hover:text-white transition-colors py-2 lg:py-0"
   >
     {name}
   </a>
 );
 
-// Header component - Sticky and Responsive
 const Header = ({ onBookACallClick }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  // Toggle for the mobile menu
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const handleLinkClick = (e) => {
+    // Close mobile menu if a link is clicked
+    setOpen(false);
   };
 
-  // Close menu and execute custom handler (for anchor links/modal)
-  const handleLinkClick = () => {
-    setIsOpen(false);
-    // Anchor links handle smooth scrolling automatically via CSS/HTML
+  const handleCtaClick = () => {
+    if (typeof onBookACallClick === 'function') {
+      onBookACallClick();
+    }
   };
-
-  // Handler for the CTA button in the header
-  const handleCtaClick = (e) => {
-    e.preventDefault();
-    setIsOpen(false);
-    onBookACallClick();
-  }
 
   return (
-    <header className="fixed w-full z-50 bg-dark-bg/95 backdrop-blur-md shadow-lg border-b border-gray-800" role="banner">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        
-        {/* Logo/Identity */}
-        <div className="flex items-center space-x-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} role="button" aria-label="Scroll to top and navigate to home">
-          <UserIcon className="w-8 h-8 text-primary-blue" /> {/* Placeholder icon for the logo */}
-          <div className="hidden sm:block">
-            <div className="font-bold text-lg leading-tight text-light-text">MARK ANGEL FERNANDEZ</div>
-            <div className="text-xs font-medium text-gray-400">NextGen VA</div>
-          </div>
+    <header className="fixed top-0 left-0 right-0 z-40 bg-gray-900/60 backdrop-blur-sm border-b border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <div className="flex items-center space-x-4">
+          <a href="/" className="flex items-center gap-3">
+            <img src="/assets/Portfolio-Logo.png" alt="Portfolio logo" className="w-10 h-10 rounded-md" />
+            <span className="text-white font-bold">NextGenVA</span>
+          </a>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-6" role="navigation" aria-label="Main Navigation">
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex items-center gap-6">
           {NAV_LINKS.map((link) => (
             <NavItem key={link.name} {...link} onLinkClick={handleLinkClick} />
           ))}
           <button 
             onClick={handleCtaClick} 
-            className="btn-primary ml-4 py-2 text-sm"
+            className="ml-4 inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-md shadow"
           >
+            <UserIcon className="w-4 h-4" />
             Book a Call
           </button>
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="lg:hidden text-light-text hover:text-primary-blue transition-colors p-2"
-          onClick={toggleMenu}
-          aria-label="Toggle navigation menu"
-          aria-expanded={isOpen}
-        >
-          {isOpen ? <CloseIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
-        </button>
+        {/* Mobile menu button */}
+        <div className="lg:hidden">
+          <button
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle navigation"
+            className="p-2 rounded-md text-gray-200 hover:text-white hover:bg-gray-800"
+          >
+            {open ? <CloseIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      <div 
-        className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-96 opacity-100 p-4 border-t border-gray-800' : 'max-h-0 opacity-0 p-0'}`}
-        aria-hidden={!isOpen}
-      >
-        <nav className="flex flex-col space-y-2" role="navigation" aria-label="Mobile Navigation">
-          {NAV_LINKS.map((link) => (
-            <NavItem key={link.name} {...link} onLinkClick={handleLinkClick} />
-          ))}
-          <button 
-            onClick={handleCtaClick} 
-            className="btn-primary w-full mt-4"
-          >
-            Book a Call
-          </button>
-        </nav>
-      </div>
+      {/* Mobile nav */}
+      {open && (
+        <div className="lg:hidden bg-gray-900 border-t border-gray-800">
+          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-2">
+            {NAV_LINKS.map((link) => (
+              <NavItem key={link.name} {...link} onLinkClick={handleLinkClick} />
+            ))}
+            <div>
+              <button 
+                onClick={() => { handleCtaClick(); setOpen(false); }} 
+                className="btn-primary w-full mt-2"
+              >
+                Book a Call
+              </button>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };

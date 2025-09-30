@@ -2,7 +2,8 @@
 import React from 'react';
 
 // ProjectCard component for displaying a single portfolio item
-const ProjectCard = ({ project, reverse = false }) => {
+// Added onDemoClick to the destructuring
+const ProjectCard = ({ project, reverse = false, onDemoClick }) => { 
   // Determine order for visual variation (image/text swap)
   const orderClass = reverse ? 'md:order-2' : 'md:order-1';
   const imageClass = reverse ? 'md:order-1' : 'md:order-2';
@@ -24,24 +25,40 @@ const ProjectCard = ({ project, reverse = false }) => {
         {/* Tools/Tech Pills */}
         <div className="flex flex-wrap gap-2 pt-2">
           {project.tools.map((tool) => {
-            const Icon = tool.icon;
+            const Icon = tool.icon; // Assuming tool.icon is a React component
             return (
               <span key={tool.name} className="pill-tech">
-                <Icon className="w-4 h-4" />
+                {Icon && <Icon className="w-4 h-4" />} {/* Render Icon only if it exists */}
                 {tool.name}
               </span>
             );
           })}
         </div>
-        
-        {/* Optional: A link to a detailed case study */}
-        <a 
-          href="#" 
-          className="inline-block mt-4 text-sm font-semibold text-primary-blue hover:text-accent-cyan transition-colors"
-          aria-label={`View detailed case study for ${project.title}`}
-        >
-          View Live Demo (If applicable) &rarr;
-        </a>
+
+        {/* Optional: A link to a detailed case study or a button for a modal/gallery */}
+        {/* Adjusted logic for handling demo links or click handlers */}
+        {typeof onDemoClick === 'function' ? ( // If an onClick handler is provided
+          <button
+            onClick={onDemoClick} // No need for arrow function if onDemoClick directly handles the click
+            className="inline-block mt-4 text-sm font-semibold text-primary-blue hover:text-accent-cyan transition-colors"
+            aria-label={`Open gallery for ${project.title}`}
+          >
+            View Live Demo (If applicable) &rarr;
+          </button>
+        ) : (
+          // Fallback if no onDemoClick, perhaps use a project.demoLink if it exists
+          project.demoLink && ( // Added conditional rendering based on project.demoLink
+            <a 
+              href={project.demoLink} // Assuming project.demoLink exists
+              target="_blank" // Open in new tab
+              rel="noopener noreferrer" // Security best practice
+              className="inline-block mt-4 text-sm font-semibold text-primary-blue hover:text-accent-cyan transition-colors"
+              aria-label={`View live demo for ${project.title}`}
+            >
+              View Live Demo &rarr;
+            </a>
+          )
+        )}
       </div>
 
       {/* Project Image/Screenshot */}

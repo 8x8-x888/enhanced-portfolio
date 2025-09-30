@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { HERO_TAGS } from '../assets/data';
 import { PhoneCallIcon } from '../assets/Icons';
-import CalendlyModal from "./CalendlyModal"; 
+import CalendlyTrigger from './CalendlyTrigger';
 
 // Component for the main Hero section
 const Hero = () => {
@@ -46,13 +46,13 @@ const Hero = () => {
           {/* Buttons Row */}
           <div className="flex gap-4">
             {/* Book a Call button using CalendlyModal */}
-            <CalendlyModal>
-              <span className="inline-flex items-center gap-2">
-                <PhoneCallIcon className="w-5 h-5" />
-                Book a Call
-              </span>
-            </CalendlyModal>
-
+            <CalendlyTrigger
+			  url="https://calendly.com/nodweb13/30min?hide_gdpr_banner=1"
+			  className="btn-primary flex items-center gap-2 animate-pulse hover:scale-105 transition-transform"
+			>
+			  <PhoneCallIcon className="w-5 h-5" /> Book a Call
+			</CalendlyTrigger>
+			
             {/* View Case Studies Button */}
             <a href="#portfolio-gallery" className="btn-secondary">
               View Case Studies

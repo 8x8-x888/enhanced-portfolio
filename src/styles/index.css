@@ -39,3 +39,15 @@ html {
     @apply inline-flex items-center gap-2 px-3 py-1 text-sm font-semibold rounded-full border border-accent-cyan/30 bg-accent-cyan/10 text-accent-cyan;
   }
 }
+
+/* src/styles/globals.css (or existing global CSS file) */
+.btn-pulse {
+  animation: pulse-cta 1.8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes pulse-cta {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.92; }
+  100% { transform: scale(1); opacity: 1; }
+}

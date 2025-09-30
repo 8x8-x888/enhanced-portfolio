@@ -2,7 +2,7 @@
 import React from 'react';
 import { SERVICE_CARDS } from '../assets/data';
 import { PhoneCallIcon } from '../assets/Icons';
-import CalendlyModal from "./CalendlyModal";
+import CalendlyTrigger from './CalendlyTrigger'
 
 // ServiceCard component for a single service offering
 const ServiceCard = ({ service }) => {
@@ -39,9 +39,12 @@ const Services = ({ onBookACallClick }) => {
             className="btn-primary flex items-center gap-2 mx-auto mb-6"
           >
             <PhoneCallIcon className="w-5 h-5" />
-            <CalendlyModal>
-			  Let’s Connect
-			</CalendlyModal>
+			<CalendlyTrigger
+			  url="https://calendly.com/nodweb13/30min?hide_gdpr_banner=1"
+			  className="btn-primary flex items-center gap-2 animate-pulse hover:scale-105 transition-transform"
+			>
+			  <PhoneCallIcon className="w-5 h-5" /> Book a Call
+			</CalendlyTrigger>
           </button>
           <h2 className="text-light-text font-extrabold">SERVICES</h2>
         </div>

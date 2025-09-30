@@ -16,7 +16,12 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" className="py-16 md:py-24 bg-dark-bg" role="region" aria-label="Hero Section: Build, Automate, Scale">
+    <section
+      id="hero"
+      className="py-16 md:py-24 bg-dark-bg"
+      role="region"
+      aria-label="Hero Section: Build, Automate, Scale"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
 
         {/* Text Content Column */}
@@ -30,20 +35,25 @@ const Hero = () => {
           </h1>
 
           <p className="text-lg text-gray-300 max-w-lg">
-            Turn manual tasks into scalable systems. I help businesses grow smarter with automation, CRM integrations, and optimized workflows across 
+            Turn manual tasks into scalable systems. I help businesses grow smarter with automation,
+            CRM integrations, and optimized workflows across 
             <span className="text-accent-cyan font-bold"> Zapier</span>, 
             <span className="text-accent-cyan font-bold"> Make</span>, 
             <span className="text-accent-cyan font-bold"> n8n</span>, and 
             <span className="gradient-text font-extrabold"> GoHighLevel</span>.
           </p>
 
-			  {/* Book a Call button using CalendlyModal */}
-			  <CalendlyModal>
-				<span className="inline-flex items-center gap-2">
-				  <PhoneCallIcon className="w-5 h-5" />
-				  Book a Call
-				</span>
-			  </CalendlyModal>
+          {/* Buttons Row */}
+          <div className="flex gap-4">
+            {/* Book a Call button using CalendlyModal */}
+            <CalendlyModal>
+              <span className="inline-flex items-center gap-2">
+                <PhoneCallIcon className="w-5 h-5" />
+                Book a Call
+              </span>
+            </CalendlyModal>
+
+            {/* View Case Studies Button */}
             <a href="#portfolio-gallery" className="btn-secondary">
               View Case Studies
             </a>
@@ -52,7 +62,11 @@ const Hero = () => {
           {/* Tech Tag Pills */}
           <div className="flex flex-wrap gap-2 pt-4">
             {HERO_TAGS.map((tag) => (
-              <a key={tag.name} href={tag.href} className="text-sm font-medium px-3 py-1 bg-gray-800 text-gray-300 rounded-full hover:bg-primary-blue hover:text-white transition-colors">
+              <a
+                key={tag.name}
+                href={tag.href}
+                className="text-sm font-medium px-3 py-1 bg-gray-800 text-gray-300 rounded-full hover:bg-primary-blue hover:text-white transition-colors"
+              >
                 {tag.name}
               </a>
             ))}

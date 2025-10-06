@@ -1,3 +1,4 @@
+// src/App.jsx
 import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -7,13 +8,13 @@ import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ModalCalendly from './components/ModalCalendly';
-import AnimatedBackground from './components/AnimatedBackground'; // Import the new background component
 
+// Main application component where all sections are assembled.
 const App = () => {
   // State to control the Calendly modal overlay
   const [isModalOpen, setIsModalOpen] = useState(false);
   
-  // Calendly URL is read from the environment variable
+  // Calendly URL is read from the environment variable (must be VITE_ prefix in Vite)
   const CALENDLY_URL = import.meta.env.VITE_CALENDLY_URL || "https://calendly.com/YOUR_USERNAME/15min";
 
   // Function passed down to components to open the modal on CTA click
@@ -28,31 +29,21 @@ const App = () => {
 
   return (
     <>
+      {/* Header is sticky and responsible for navigating the main content */}
       <Header onBookACallClick={handleBookACall} />
       
-      {/* 
-        The main content area is now a "relative" container.
-        This allows the "absolute" animated background to be positioned correctly inside it.
-      */}
-      <main id="main-content" className="relative pt-20"> 
-        {/* The animated background is placed here, at the bottom of the stacking order (z-0). */}
-        <AnimatedBackground />
-
-        {/* 
-          This wrapper is also "relative" and has a z-index.
-          This ensures all your content sections render ON TOP of the background.
-        */}
-        <div className="relative z-10">
-          <Hero onBookACallClick={handleBookACall} />
-          <About />
-          <Portfolio />
-          <Services onBookACallClick={handleBookACall} />
-          <Contact />
-        </div>
+      {/* Main content area. ID is used by the A11y skip-link in index.html */}
+      <main id="main-content" className="pt-20"> 
+        <Hero onBookACallClick={handleBookACall} />
+        <About />
+        <Portfolio />
+        <Services onBookACallClick={handleBookACall} />
+        <Contact />
       </main>
       
       <Footer />
 
+      {/* Calendly Modal Component (Accessible, keyboard-enabled) */}
       <ModalCalendly 
         isOpen={isModalOpen}
         onClose={handleCloseModal}

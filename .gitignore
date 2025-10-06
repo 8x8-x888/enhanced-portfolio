@@ -16,3 +16,6 @@
 
 # Vite
 .vite/
+
+#Old files
+.old

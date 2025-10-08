@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "tsparticles-slim";
+import { loadSlim } from "@tsparticles/slim";
 import { particlesConfigFull } from '../config/particles-config-full.js';
 import { particlesConfigLight } from '../config/particles-config-light.js';
 import { particlesConfigRecommended } from '../config/particles-config-recommended.js';

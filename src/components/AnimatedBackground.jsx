@@ -3,6 +3,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "tsparticles-slim";
 import { particlesConfigFull } from '../config/particles-config-full.js';
 import { particlesConfigLight } from '../config/particles-config-light.js';
+import { particlesConfigRecommended } from '../config/particles-config-recommended.js';
 
 const AnimatedBackground = () => {
   const [init, setInit] = useState(false);
@@ -48,7 +49,7 @@ const AnimatedBackground = () => {
       <Particles
         id="tsparticles"
         particlesLoaded={particlesLoaded}
-        options={isLowPerformance ? particlesConfigLight : particlesConfigFull}
+        options={particlesConfigRecommended}
       />
     </div>
   );

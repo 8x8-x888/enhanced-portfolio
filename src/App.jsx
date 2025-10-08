@@ -28,30 +28,20 @@ const App = () => {
 
   return (
     <>
-      <Header onBookACallClick={handleBookACall} />
-      
-      {/* 
-        The main content area is now a "relative" container.
-        This allows the "absolute" animated background to be positioned correctly inside it.
-      */}
-      <main id="main-content" className="relative pt-20"> 
-        {/* The animated background is placed here, at the bottom of the stacking order (z-0). */}
-        <AnimatedBackground />
-
-        {/* 
-          This wrapper is also "relative" and has a z-index.
-          This ensures all your content sections render ON TOP of the background.
-        */}
-        <div className="relative z-10">
+      <AnimatedBackground />
+      <div className="relative z-10">
+        <Header onBookACallClick={handleBookACall} />
+        
+        <main id="main-content" className="pt-20">
           <Hero onBookACallClick={handleBookACall} />
           <About />
           <Portfolio />
           <Services onBookACallClick={handleBookACall} />
           <Contact />
-        </div>
-      </main>
-      
-      <Footer />
+        </main>
+        
+        <Footer />
+      </div>
 
       <ModalCalendly 
         isOpen={isModalOpen}

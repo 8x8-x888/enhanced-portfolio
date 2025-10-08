@@ -22,6 +22,13 @@ export const particlesConfigRecommended = {
       value: 3,
       random: true,
     },
+    links: {
+      color: "#ffffff",
+      distance: 150,
+      enable: true,
+      opacity: 0.5,
+      width: 1,
+    },
     move: {
       enable: true,
       speed: 1,

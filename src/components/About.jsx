@@ -4,7 +4,7 @@ import React from 'react';
 // Component for the About Me section
 const About = () => {
   return (
-    <section id="about-me" className="py-16 md:py-24 bg-gray-900" role="region" aria-label="About the Automation Specialist">
+    <section id="about-me" className="py-16 md:py-24" role="region" aria-label="About the Automation Specialist">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* About Header */}
@@ -17,7 +17,7 @@ const About = () => {
         <div className="grid md:grid-cols-3 gap-8">
           
           {/* Core Value Proposition (Gradient Box) - Preserving original HTML structure's intent */}
-          <div className="md:col-span-2 bg-gradient-to-r from-gray-800 to-gray-700 p-6 rounded-xl shadow-xl border border-gray-700 h-full flex items-center">
+          <div className="md:col-span-2 bg-gradient-to-r from-gray-800/80 to-gray-700/80 p-6 rounded-xl shadow-xl border border-gray-700 h-full flex items-center">
             <p className="text-lg text-light-text leading-relaxed">
               I streamline processes and connect tools to save teams time and reduce costs. My work focuses on 
               <strong className="text-primary-blue"> Zapier workflows</strong>, 
@@ -28,7 +28,7 @@ const About = () => {
           </div>
           
           {/* Placeholder for Additional Info (Original HTML had a Gravatar Card here) */}
-          <div className="md:col-span-1 bg-gray-800 p-6 rounded-xl shadow-xl flex flex-col justify-between items-start border border-gray-700">
+          <div className="md:col-span-1 bg-gray-800/80 p-6 rounded-xl shadow-xl flex flex-col justify-between items-start border border-gray-700">
             <h3 className="text-xl font-semibold text-light-text mb-4">Core Philosophy</h3>
             <p className="text-gray-400 italic">
               "The goal of automation is not to eliminate work, but to elevate human effort to more valuable, creative, and strategic tasks."

@@ -99,7 +99,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact-form" className="py-16 md:py-24 bg-dark-bg" role="region" aria-label="Contact Form to Start a Project">
+    <section id="contact-form" className="py-16 md:py-24" role="region" aria-label="Contact Form to Start a Project">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-12">
@@ -107,7 +107,7 @@ const Contact = () => {
           <p className="text-lg text-gray-400">Ready to automate? Fill out the form or book a call.</p>
         </div>
 
-        <div className="bg-gray-800 p-8 md:p-12 rounded-xl shadow-2xl border border-gray-700">
+        <div className="bg-gray-800/80 p-8 md:p-12 rounded-xl shadow-2xl border border-gray-700">
           
           {renderStatusMessage()}
           

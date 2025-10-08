@@ -9,7 +9,7 @@ const ProjectCard = ({ project, reverse = false, onDemoClick }) => {
   const imageClass = reverse ? 'md:order-1' : 'md:order-2';
 
   return (
-    <article className="grid md:grid-cols-2 gap-8 items-center bg-gray-800 rounded-xl shadow-2xl p-6 md:p-10 transition-shadow duration-300 hover:shadow-primary-blue/30" role="group" aria-labelledby={`project-title-${project.id}`}>
+    <article className="grid md:grid-cols-2 gap-8 items-center bg-gray-800/80 rounded-xl shadow-2xl p-6 md:p-10 transition-shadow duration-300 hover:shadow-primary-blue/30" role="group" aria-labelledby={`project-title-${project.id}`}>
       
       {/* Project Text Content */}
       <div className={`space-y-4 ${orderClass}`}>

@@ -18,7 +18,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="py-16 md:py-24 bg-dark-bg"
+      className="py-16 md:py-24"
       role="region"
       aria-label="Hero Section: Build, Automate, Scale"
     >

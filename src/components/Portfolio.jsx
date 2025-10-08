@@ -23,7 +23,7 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio-gallery" className="py-16 md:py-24 bg-dark-bg" role="region" aria-label="Portfolio Gallery of Automation Projects">
+    <section id="portfolio-gallery" className="py-16 md:py-24" role="region" aria-label="Portfolio Gallery of Automation Projects">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Portfolio Header */}
         <div className="text-center mb-16">

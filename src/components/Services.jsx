@@ -9,7 +9,7 @@ const ServiceCard = ({ service }) => {
   const Icon = service.icon;
 
   return (
-    <div className="bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-primary-blue/50 transition-transform duration-300 hover:scale-[1.02]">
+    <div className="bg-gray-800/80 p-6 rounded-xl shadow-lg border-t-4 border-primary-blue/50 transition-transform duration-300 hover:scale-[1.02]">
       <Icon className="w-8 h-8 text-primary-blue mb-4" />
       <h3 className="text-xl font-bold text-light-text mb-3">{service.title}</h3>
       <p className="text-gray-400 mb-4">{service.description}</p>
@@ -29,23 +29,17 @@ const ServiceCard = ({ service }) => {
 // Component for the Services section
 const Services = ({ onBookACallClick }) => {
   return (
-    <section id="services" className="py-16 md:py-24 bg-gray-900" role="region" aria-label="My Automation Services">
+    <section id="services" className="py-16 md:py-24" role="region" aria-label="My Automation Services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Services Header and CTA */}
         <div className="text-center mb-16">
-          <button 
-            onClick={onBookACallClick} 
+          <CalendlyTrigger
+            url="https://calendly.com/nodweb13/30min?hide_gdpr_banner=1"
             className="btn-primary flex items-center gap-2 mx-auto mb-6"
           >
-            <PhoneCallIcon className="w-5 h-5" />
-			<CalendlyTrigger
-			  url="https://calendly.com/nodweb13/30min?hide_gdpr_banner=1"
-			  className="btn-primary flex items-center gap-2 animate-pulse hover:scale-105 transition-transform"
-			>
-			  <PhoneCallIcon className="w-5 h-5" /> Book a Call
-			</CalendlyTrigger>
-          </button>
+            <PhoneCallIcon className="w-5 h-5" /> Book a Call
+          </CalendlyTrigger>
           <h2 className="text-light-text font-extrabold">SERVICES</h2>
         </div>
 
@@ -58,12 +52,12 @@ const Services = ({ onBookACallClick }) => {
         
         {/* Secondary CTA area */}
         <div className="flex flex-wrap justify-center gap-4 mt-16">
-            <button 
-                onClick={onBookACallClick} 
+            <CalendlyTrigger 
+                url="https://calendly.com/nodweb13/30min?hide_gdpr_banner=1" 
                 className="btn-primary"
             >
                 Let's Automate Your Workflow
-            </button>
+            </CalendlyTrigger>
             <a href="#portfolio-gallery" className="btn-secondary">
                 See Real Results
             </a>
